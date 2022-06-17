@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.demo03_mapper.BrandMapper">
+    <insert id="insert">
+    insert into tb_brand value (#{id},#{brandName},#{companyName},#{ordered},#{description},#{status})
+
+    </insert>
+    <select id="sAll" resultType="Brand">
+        select *
+        from tb_brand;
+    </select>
+
+    <select id="sOne" resultType="Brand">
+        select *
+        from tb_brand where id =#{哈哈哈};
+    </select>
+    <select id="selectbyCoon" resultType="Brand">
+        select *
+        from tb_brand
+        <where>
+            <if test="brandName!=null and brandName !=''">
+              and  brand_name like concat(concat('%',#{brandName}),'%')
+            </if>
+            <if test="companyName!=null and companyName !=''">
+                and  companyName like concat(concat('%',#{companyName}),'%')
+            </if>
+        </where>
+
+
+
+    </select>
+
+</mapper>
